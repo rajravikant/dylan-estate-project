@@ -34,7 +34,7 @@ const PropertyDetails = () => {
             <input
               id="rent" value="Rent" onChange={handleChange}
               name="propertyFor" checked={propertyDetails.propertyFor === "Rent"}
-              type="radio"
+              type="radio" required
               className="size-5 border-gray-300 text-primary focus:ring-primary"
             />
             <label
@@ -46,7 +46,7 @@ const PropertyDetails = () => {
           </div>
           <div className="flex items-center gap-x-3 col-span-1">
             <input
-              id="Sale" value="Sale" onChange={handleChange}
+              id="Sale" value="Sale" onChange={handleChange} required
               name="propertyFor" checked={propertyDetails.propertyFor === "Sale"}
               type="radio"  
               className="size-5 border-gray-300 text-primary focus:ring-primary"
@@ -66,8 +66,8 @@ const PropertyDetails = () => {
         <div className="mt-6  grid lg:grid-cols-3  grid-cols-1">
          {["Resedential","Commercial","Land/Plot"].map((type,index) => (
             <div className="flex items-center gap-x-3 col-span-1" key={index}>
-            <input
-              id={index+type} 
+            <input 
+              id={index+type} required
               name="propertyType" checked={propertyDetails.propertyType === type}
               type="radio" value={type}
               onChange={(e)=>{
@@ -147,7 +147,7 @@ const PropertyDetails = () => {
           <div className="mt-2">
             <input
               id="buildUpArea" value={propertyDetails.buildUpArea} onChange={handleChange}
-              name="buildUpArea" 
+              name="buildUpArea" required
               type="text" placeholder="Sq.Ft"
               autoComplete="build up area"
               className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
@@ -165,7 +165,7 @@ const PropertyDetails = () => {
           <div className="mt-2">
             <input
               id="carpetArea" value={propertyDetails.carpetArea} onChange={handleChange}
-              name="carpetArea"
+              name="carpetArea" required
               type="text" placeholder="Sq.Ft"
               autoComplete="carpetArea"
               className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
@@ -183,7 +183,7 @@ const PropertyDetails = () => {
             <input
               id="propertyOnFloor" value={propertyDetails.propertyOnFloor} onChange={handleChange}
               type="text" placeholder="eg. 1st, 2nd, 3rd"
-              name="propertyOnFloor"
+              name="propertyOnFloor" required
               autoComplete="propertyOnFloor"
               className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
             />
@@ -198,7 +198,7 @@ const PropertyDetails = () => {
           </label>
           <div className="mt-2">
             <input
-              id="Total-Floors" name="totalFloors"
+              id="Total-Floors" name="totalFloors" required
               value={propertyDetails.totalFloors} onChange={handleChange}
               type="text" placeholder="total floors"
               autoComplete="family-name"
@@ -216,13 +216,13 @@ const PropertyDetails = () => {
           <div className="mt-2">
             <select
               id="propertyFacing" 
-              name="propertyFacing"
+              name="propertyFacing"  required
               autoComplete="propertyFacing" value={propertyDetails.propertyFacing} onChange={handleChange}
               className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary  sm:text-sm sm:leading-6"
             >
             {["North"," South",
             "East","West","North-East","North-West","South","South-East","South-West"].map((face,index) => (
-              <option value={face} key={index}>{face}</option>
+              <option  value={face} key={index}>{face}</option>
             ))
             }
             </select>
@@ -292,7 +292,7 @@ const PropertyDetails = () => {
       <FieldSet legend="Property Description">
         <div className="mt-6">
           <textarea
-            id="about"
+            id="about" required
             name="about" value={propertyDetails.propertyDescription} onChange={
               (e) => {
                 setPropertyDetails((prev) => ({

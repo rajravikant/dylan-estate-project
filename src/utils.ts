@@ -5,9 +5,6 @@ import { UserStateContext } from "./store/userStateContext";
 import { useContext } from "react";
 
 
-
-
-
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
@@ -23,7 +20,7 @@ const getAuthToken = () =>{
 export function isAuthLoader() {
   const token = getAuthToken();
   if (!token) {
-    return redirect("/login");
+    return redirect("/signup");
   }
   return  token;
 }

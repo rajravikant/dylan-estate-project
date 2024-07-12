@@ -7,21 +7,23 @@ import {
   MenuItem,
   MenuItems,
 } from "@headlessui/react";
-import { UserIcon } from "@heroicons/react/16/solid";
+import { UserCircle } from "lucide-react";
 
 const Dropdown = ({ user, logout }: { user: any; logout: () => void }) => {
   return (
     <Menu as="div" className="relative inline-block z-[9999]">
       <MenuButton className="focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
+      <div className="flex items-center h-full">
         {user.avatar ? (
-          <img
-            src={user.avatar}
-            alt={user.name ?? "User"}
-            className="w-8 h-8 rounded-full object-cover"
-          />
-        ) : (
-          <UserIcon className="size-6 rounded-full" />
-        )}
+            <img
+              src={user.avatar}
+              alt={user.name ?? "User"}
+              className="size-8 rounded-full object-cover"
+            />
+          ) : (
+            <UserCircle className="size-6 rounded-full mt-1" />
+          )}
+          </div>
       </MenuButton>
 
       <Transition

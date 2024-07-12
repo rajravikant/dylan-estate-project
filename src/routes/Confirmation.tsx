@@ -1,7 +1,25 @@
 import Button from "../componets/UI/Button"
-import { useNavigate } from "react-router-dom"
+import { useNavigate,useLocation, Link } from "react-router-dom"
+import { useContext, useEffect } from "react"
+import { UserStateContext } from "../store/userStateContext"
+
 const Confirmation = () => {
+    const { user } = useContext(UserStateContext);
+    const token = user.token ?? null;
     const navigate = useNavigate();
+    const location = useLocation();
+    // let {propertyID} = location.state 
+    let  propertyID:string | null = null;
+    useEffect(() => {
+        if (!token) {
+            navigate("/login");
+        }
+        propertyID = location.state.propertyID as string
+    }, [token]);
+    
+
+  
+    
   return (
     <div className='space-y-5 mt-10 min-h-[calc(100vh-369px)] sm:px-16'>
         <h2>Thank you for listing your property with us</h2>
@@ -12,9 +30,9 @@ const Confirmation = () => {
             <Button  title="Edit Property Listing" onClick={()=>{
                 navigate('/')
             }}/>
-            <Button title="Preview Property Listing" onClick={()=>{
-                navigate('/add-property/confirmation')
-            }}/>
+            <Link to={`/property/${propertyID}`} className="bg-primary text-white text-sm  rounded-md px-6 py-2">
+            Preview Property Listing
+            </Link>
         </div>
     </div>
   )

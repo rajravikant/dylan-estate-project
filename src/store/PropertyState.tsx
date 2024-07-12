@@ -39,7 +39,7 @@ export const PropertyStateProvider = ({
     carpetArea: "",
     propertyOnFloor: "",
     totalFloors: "",
-    propertyFacing: "",
+    propertyFacing: "West",
     propertyAge: "",
     bhkType: "",
     bathroomToilets: "",
@@ -53,7 +53,7 @@ export const PropertyStateProvider = ({
     buildingName: "",
     locality: "",
     landmark: "",
-    city: "",
+    city: "Delhi",
     map: "",
   });
 
@@ -73,7 +73,7 @@ export const PropertyStateProvider = ({
     rent: 0,
     security: 0,
     maintainance: {
-      type: "",
+      type: "Included in Rent",
       charge: 0,
       period: "",
     },

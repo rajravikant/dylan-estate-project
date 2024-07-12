@@ -1,10 +1,10 @@
 const express = require("express");
 const cors = require("cors");
-
 const path = require("path");
-
 const createHttpError = require ("http-errors")
 const isHttpError = createHttpError.isHttpError;
+
+
 const app = express();
 
 const mongoose = require("mongoose");
@@ -13,7 +13,6 @@ app.use(cors());
 
 const propertyRoutes = require("./routes/property");
 const authRoutes = require("./routes/auth");
-
 
 app.use(express.json());
 

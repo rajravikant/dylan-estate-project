@@ -1,5 +1,5 @@
 import React,{createContext,useState} from 'react'
-
+import { PropertyType } from './FormDataSchema'
 type User = {
   id: string
   name: string
@@ -8,6 +8,7 @@ type User = {
   role: string
   avatar: string
   token: string
+  properties: PropertyType[]
   sessionExpires: string
 }
 

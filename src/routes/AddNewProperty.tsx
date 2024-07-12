@@ -1,6 +1,6 @@
-import { useState,useContext } from "react";
+import { useState,useContext,useRef } from "react";
 import {PropertyStateContext } from "../store/PropertyState";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import axios, { AxiosError } from "axios";
 
@@ -12,7 +12,6 @@ import PropertyImages from "../componets/Property/PropertyImages";
 import { ArrowLeft } from "lucide-react";
 import { Dialog,DialogTitle,DialogPanel,DialogBackdrop } from "@headlessui/react";
 import { UserStateContext } from "../store/userStateContext";
-
 
 
 const steps = [
@@ -40,12 +39,13 @@ const steps = [
 ];
 
 const AddNewProperty = () => {
-  const [currentStep, setStep] = useState(0);
+  const [currentStep, setStep] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
-  const {user} = useContext(UserStateContext);
+  const btnRef = useRef<HTMLButtonElement>(null);
   const { getAllData,resetForm  } = useContext(PropertyStateContext);
   const navigate = useNavigate();
-  const token = user.token ?? "";
+  const {user} = useContext(UserStateContext);
+  const token = user.token ?? null;
 
 
   const processForm = async () => {
@@ -69,10 +69,10 @@ const AddNewProperty = () => {
       
       if (status === 201) {
         resetForm();
-        navigate('/add-property/confirmation');  
-        // navigate('/add-property/confirmation',{
-        //   state: { propertyID: response.data.propertyID }
-        // });  
+        navigate('/add-property/confirmation',{
+          state: { propertyID: response.data.propertyId }
+        });  
+       
       }
     } catch (error: AxiosError | any) {
       console.error(error)
@@ -86,10 +86,10 @@ const AddNewProperty = () => {
  
 
   const next = () => {
-    if (currentStep < steps.length - 1) {
+    if (currentStep <= steps.length - 1) {
       setStep(currentStep => currentStep + 1);
     }
-    if (currentStep === steps.length - 1) {
+    if (currentStep === steps.length) {
       setIsOpen(true);
     }
   }
@@ -124,42 +124,46 @@ const AddNewProperty = () => {
         <div className="bg-white max-w-4xl border border-zinc-200 mx-auto shadow-md rounded-lg overflow-hidden">
         <div className="menus-steps flex w-full gap-2 lg:gap-0 bg-[#FCF8F4] p-5 items-center lg:justify-between ">
           {steps.map((step,index) => (
-            <div key={step.id} onClick={()=>{
-              setStep(index);
-            }} className={`cursor-pointer uppercase font-medium  ${currentStep === index ? 'text-primary ' : 'text-gray-400'}`}>
+            <div key={index}  className={`cursor-pointer uppercase font-medium  ${currentStep === step.id ? 'text-primary ' : 'text-gray-400'}`}>
               <span className="lg:text-sm text-xs   text-center inline-block ">{step.step}</span>
             </div>
           ))}
       </div>
-      <progress className="w-full h-2"  value={currentStep + 1} max={steps.length} />
+      <progress className="w-full" value={currentStep-1} max={steps.length-1} />
 
           <div className="h-[26rem] overflow-auto lg:px-16 lg:py-5 ">
            
-            <form className="space-y-5 lg:py-5 p-5" >
-            {currentStep === 0 && (
+            <form className="space-y-5 lg:py-5 p-5" onSubmit={(e)=>{
+                e.preventDefault();
+                next()
+            }} >
+            {currentStep === 1 && (
                <PropertyDetails/>
             )}
 
-          {currentStep === 1 && (
+          {currentStep === 2 && (
             <div>
               <LocationDetails/>
             </div>
           )}
-          {currentStep === 2 && (
+          {currentStep === 3 && (
             <div>
               <Features/>
             </div>
           )}
-          {currentStep === 3 && (
+          {currentStep === 4 && (
             <div>
               <PriceDetails/>
             </div>
           )}
-          {currentStep === 4 && (
+          {currentStep === 5 && (
             <div>
             <PropertyImages/>
             </div>
           )}
+          <button hidden ref={btnRef} type="submit"  className=" disabled:bg-gray-500 text-lg bg-transparent px-8 py-1 border rounded-md uppercase text-white hover:bg-white hover:text-primary transition duration-75">
+              {currentStep === steps.length ? 'Save & Post' : 'Next'}
+            </button>
           </form>
 
             
@@ -173,7 +177,7 @@ const AddNewProperty = () => {
               </p>
               </div>
             <div className="inline-flex items-center justify-center gap-3">
-            <button type="button" hidden={currentStep === 0} onClick={()=>{ 
+            <button type="button" hidden={currentStep === 1} onClick={()=>{ 
              prev()
             }}  className=" disabled:bg-gray-500 flex-1 text-lg bg-transparent">
               {
@@ -185,9 +189,9 @@ const AddNewProperty = () => {
             </button>
            
             <button type="button" onClick={()=>{
-             next()
+              btnRef.current?.click();
             }}  className=" disabled:bg-gray-500 text-lg bg-transparent px-8 py-1 border rounded-md uppercase text-white hover:bg-white hover:text-primary transition duration-75">
-              {currentStep === steps.length - 1 ? 'Save & Post' : 'Next'}
+              {currentStep === steps.length ? 'Save & Post' : 'Next'}
             </button>
 
             </div>

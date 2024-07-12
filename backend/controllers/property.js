@@ -65,10 +65,11 @@ exports.postProperty = (req, res, next) => {
     creator: creator,
   });
   
-
+  let propertyId = ''
   property
     .save()
-    .then((r) => {
+    .then((saved) => {
+      propertyId = saved._id;
       return User.findById(userId);
     })
     .then((user) => {
@@ -80,7 +81,8 @@ exports.postProperty = (req, res, next) => {
     })
     .then((response) => {
       res.status(201).json({
-        message: "Post Created Succesfully",
+        message: "Property Added Succesfully",
+        propertyId: propertyId,
       });
     })
     .catch((err) => {

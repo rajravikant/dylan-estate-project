@@ -46,7 +46,7 @@ const Propertyschema = new Schema(
       rent: {type: Number,required: true,},
       security: {type: Number,required: true,},
       maintainance: {
-        type: {type: String,required: true},
+        type: {type: String,required: true,deafault: "Included in Rent"},
         charge: {type: Number},
         period: {type: String},
       },

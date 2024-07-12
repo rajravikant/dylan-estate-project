@@ -1,5 +1,6 @@
 import { useContext,useState } from "react";
 import { PropertyStateContext } from "../../store/PropertyState";
+import { IndianRupee } from "lucide-react";
 function PriceDetails() {
   const [view, setView] = useState(null as string | null);
   const { priceDetails, setPriceDetails } = useContext(PropertyStateContext);
@@ -28,13 +29,16 @@ function PriceDetails() {
           >
             Rent
           </label>
-          <div className="mt-2">
+          <div className="mt-2 relative">
+              <div className="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
+                <IndianRupee className="size-4 text-gray-400" />
+              </div>
             <input
               id="rent" onChange={handleChange} value={priceDetails.rent}
               name="rent"
-              type="text"
-              placeholder="$/Month"
-              className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+              type="number" required
+              placeholder="/ Month"
+              className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 ps-10"
             />
           </div>
         </div>
@@ -46,13 +50,16 @@ function PriceDetails() {
           >
             Security
           </label>
-          <div className="mt-2">
+          <div className="mt-2 relative">
+          <div className="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
+                <IndianRupee className="size-4 text-gray-400" />
+              </div>
             <input
               id="security" onChange={handleChange} value={priceDetails.security}
               name="security"
-              type="text"
-              placeholder="$/Month"
-              className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+              type="number" 
+              placeholder="/ Month"
+              className="block w-full ps-10 rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
             />
           </div>
         </div>
@@ -73,15 +80,14 @@ function PriceDetails() {
                   type: e.target.value,
                 },
               }));
-              
             }
             }
-              id="maintainance"
-              value={priceDetails.maintainance.type || "Included in Rent"}
-              name="maintainanceType"
+              id="maintainance" required
+              value={priceDetails.maintainance.type}
+              name="maintainanceType" 
               className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary  sm:text-sm sm:leading-6"
             >
-              {["Included in Rent ", "Extra Maintenance"].map((face, index) => (
+              {["Included in Rent", "Extra Maintenance"].map((face, index) => (
                 <option value={face} key={index}>
                   {face}
                 </option>
@@ -100,9 +106,9 @@ function PriceDetails() {
             <div className="grid grid-cols-2 mt-2 gap-5">
             <input
               id="maintainanceCharge"
-              value={priceDetails.maintainance.charge || 0}
+              value={priceDetails.maintainance.charge}
               name="maintainanceCharge"
-              type="text" onChange={
+              type="number" onChange={
                 (e) => {
                   setPriceDetails((prev) => ({
                     ...prev,
@@ -156,7 +162,7 @@ function PriceDetails() {
                   remarks: e.target.value,
                 }));
               }
-            } value={priceDetails.remarks}
+            } value={priceDetails.remarks.trim()}
             name="about"
             rows={5}
             className="block w-full mt-2 shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"

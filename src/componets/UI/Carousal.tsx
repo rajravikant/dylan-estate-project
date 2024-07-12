@@ -17,7 +17,7 @@ function Carousal({images,className}:{images?:string[],className?:string}) {
     <Swiper navigation={true} modules={[Navigation,Pagination,Autoplay]}  autoplay={true} pagination={true} className={className}>
         {images!.map((image, index) => (
             <SwiperSlide key={index}>
-            <img src={image} alt="image" className='h-full w-full object-contain block' />
+            <img src={image} alt="image" className='h-full w-full object-cover block' />
             </SwiperSlide>
         ))}
   </Swiper>

@@ -60,10 +60,18 @@ export type FormDataSchema = {
   propertyImages: PropertyImagesTypes;
 };
 
+export type CreatorType = {
+  _id: string;
+  name: string;
+  phone: string;
+  avatar: string;
+};
+
 
 export type PropertyType = {
   _id: string;
   createdAt: string;
+  creator ?: CreatorType;
   updatedAt: string;
   details: PropertyDetailsType;
   location: LocationDetailsType;

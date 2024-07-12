@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
   const token = header.split(" ")[1];
   let decodedToken;
   try {
-    decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+    decodedToken = jwt.verify(token, "9zbjp31uv1feHVwg");
   } catch (error) {
     next(createHttpError(404, error.message+' login again'));
   }

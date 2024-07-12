@@ -10,12 +10,12 @@ function Features() {
 
  
   const { features,setFeatures } = useContext(PropertyStateContext);
-  
+    
 
   return (
     <section className="divide-y divide-gray-200 space-y-10 ">
       <div>
-        <h2 className="text-xl py-5 font-semibold leading-6 text-gray-900">
+        <h2 className="text-xl font-semibold leading-6 text-gray-900">
           General Features
         </h2>
         <div className="space-y-5">
@@ -23,7 +23,7 @@ function Features() {
             options={["Allowed", "Not Allowed"]}
             className="lg:grid-cols-2" 
             type="classic"
-            legend="Non-Veg"
+            legend="Non-Veg" 
             value={features.nonVeg}
             onChange={(e) => {
               setFeatures((prev) => ({

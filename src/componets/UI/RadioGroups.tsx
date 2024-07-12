@@ -25,7 +25,7 @@ function RadioGroups({
 
       <RadioGroup
         className={cn("mt-6 grid lg:grid-cols-4  gap-5", className ?? "")}
-        value={value}
+        value={value}  
         onChange={(e) => onChange(e)}
         aria-label="Server size"
       >
@@ -37,7 +37,7 @@ function RadioGroups({
                 className="flex items-center gap-2 w-full "
               >
                 <Radio
-                  value={option}
+                  value={option} 
                   className="group flex size-5 items-center justify-center rounded-full border bg-white data-[checked]:bg-primary"
                 >
                   <span className="invisible size-2 rounded-full bg-white group-data-[checked]:visible" />

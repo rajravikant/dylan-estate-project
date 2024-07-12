@@ -43,7 +43,7 @@ exports.postLogin = (req, res, next) => {
     return next(createHttpError(406, valiResult.array()[0].msg));
   }
   User.findOne({ email: email })
-    .select("+password +email")
+    .select("+password +email").populate('properties')
     .then((user) => {
       if (!user) {
         return res.status(404).json({ error: "No account exits!" });
@@ -64,6 +64,7 @@ exports.postLogin = (req, res, next) => {
               country : user.country,
               role : user.role,
               avatar : user.avatar,
+              properties : user.properties,
             },
           });
         } else {

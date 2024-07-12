@@ -14,7 +14,25 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #202020;
+  background-color: #373737;
   border-radius: 10px;
   border: 3px solid #ffffff;
+}
+
+
+*::-webkit-progress-bar{
+  height: 10px;
+  background-color: #ddd;
+  transition: width 300ms ease;
+}
+
+progress[value]::-webkit-progress-value {
+  width: 0;
+  border-radius: 20px;
+  background-color: #122B49;
+  transition: width 300ms ease;
+}
+
+.leaflet-container {
+  height: 80vh;
 }

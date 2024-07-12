@@ -3,9 +3,9 @@ import { UserStateContext } from '../store/userStateContext'
 import { Link, NavLink } from 'react-router-dom'
 import Dropdown from './UI/Dropdown'
 import { LanguageIcon,Bars3Icon ,ArrowLeftIcon} from '@heroicons/react/24/outline'
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import { Dialog,Transition,TransitionChild,DialogPanel } from '@headlessui/react'
-
+import logo from '../assets/logo2.svg'
 const links = [
   {
     name: 'All Properties',
@@ -46,22 +46,23 @@ const Header = () => {
   return (
     <nav
       tabIndex={-1}
-      className="lg:px-16 lg:py-5 p-5  bg-[#FCF8F4] font-pop  w-full  flex flex-row justify-between  items-center "
+      className="lg:px-16 lg:py-4 p-4  bg-[#FCF8F4] font-pop  w-full  flex flex-row justify-between  items-center "
     >
-       <div>
-        <Link to="/">
+       
+        <Link to="/" className='inline-flex flex-col items-start' >
           <img
-            src="/logo.png"
-            alt="99acres"
-            className="h-10"
+            src={logo}
+            alt="dylan-logo"
+            className="h-6 -ml-8 w-full object-contain"
           />
+          <span className='text-[#B0854C] font-medium text-lg text-left'>Dylan Estate</span>
         </Link>
-      </div>
+     
       <div className='nav-right flex items-center gap-5 justify-center'>
 
       <ul className="flex items-center gap-5 text-white">
         {links.map(({name,path}, index) => (
-            <li key={index} className='*:uppercase font-semibold hidden lg:block'>
+            <li key={index} className='*:uppercase text-sm font-semibold hidden lg:block'>
               <NavLink
                 to={path}
                 end
@@ -78,7 +79,7 @@ const Header = () => {
 
       {user.token && (
         authLinks.map(({name,path}, index) => (
-          <li key={index} className='*:uppercase font-semibold hidden lg:block'>
+          <li key={index} className='*:uppercase text-sm font-semibold hidden lg:block'>
             <NavLink
               to={path}
               end
