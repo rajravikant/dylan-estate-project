@@ -1,5 +1,4 @@
 import "leaflet/dist/leaflet.css";
-import 'leaflet-geosearch/dist/geosearch.css';
 import "../index.css";
 import { useState,useEffect,useRef,useMemo,useCallback, } from "react";
 import { MapContainer, TileLayer, useMap, Marker, Popup,useMapEvents } from "react-leaflet";
