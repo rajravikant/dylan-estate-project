@@ -92,26 +92,26 @@ export const loader = (async () => {
 )satisfies LoaderFunction
 
 
-type marker = {
-  position: [number, number];
-  content: string;
-};
+// type marker = {
+//   position: [number, number];
+//   content: string;
+// };
 
-const Markers: marker[] = [
-  {
-    position: [23.34380664470183, 85.30615675989196],
-    content: "Location 1",
-  },
-  {
-    position: [23.35019807248094, 85.30010335350777],
-    content: "Location 2",
-  },
-  {
-    position: [23.355060909178736, 85.32643567127896],
-    content: "Location 3",
-  },
+// const Markers: marker[] = [
+//   {
+//     position: [23.34380664470183, 85.30615675989196],
+//     content: "Location 1",
+//   },
+//   {
+//     position: [23.35019807248094, 85.30010335350777],
+//     content: "Location 2",
+//   },
+//   {
+//     position: [23.355060909178736, 85.32643567127896],
+//     content: "Location 3",
+//   },
  
-];
+// ];
 
 
 
