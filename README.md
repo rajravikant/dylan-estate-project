@@ -4,7 +4,8 @@
 Clone the project
 
 ```bash
-  git clone https://github.com/rajravikant/Dylan-estate-project
+  git clone https://github.com/rajravikant/dylan-estate-project
+
 ```
 
 Go to the project directory
@@ -30,6 +31,9 @@ for clinet
 for server
 ```bash
   npm start
-
-Create a env file and store the keys 
-
+```
+Rules: 
+```
+Create a env file and store the keys
+Create account on Firebase to get the api keys 
+```
