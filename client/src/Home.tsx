@@ -6,7 +6,7 @@ import { PropertyType } from "./store/FormDataSchema";
 import PropertyCard from "./componets/PropertyCard";
 import Button from "./componets/UI/Button";
 import { SearchIcon } from "lucide-react";
-import GoogleMaps from "./componets/GoogleMaps";
+import { LocationMap } from "./componets/LocationMap";
 
 function Home() {
   let data = useLoaderData() as PropertyType[];
@@ -43,13 +43,6 @@ function Home() {
                         location={property.location.locality ?? "Address"}
                         price={property.price.rent ?? 0}
                         area={property.details.buildUpArea.toString() ?? "0"}
-                        // property.details.bhkType + property.details.propertySubType +
-                        //   " / " +property.details.propertyType+
-                        //   " in " +
-                        //   property.location.locality +
-                        //   " " +
-                        //   property.details.buildUpArea +
-                        //   " sqft"
                         title={`${property.details.bhkType} ${property.details.propertySubType} in ${property.location.locality} (${property.details.buildUpArea} sqft) for ${property.details.propertyFor}`}
                       />
                     </Link>
@@ -67,7 +60,7 @@ function Home() {
 
       <div className="w-1/2 h-full hidden lg:block sticky top-5 overflow-hidden">
         <div className="img-container w-full bg-gray-400 ">
-                <GoogleMaps />
+                <LocationMap lat={	23.344315} lng={	85.296013}/>
         </div>
       </div>
 
@@ -92,26 +85,6 @@ export const loader = (async () => {
 )satisfies LoaderFunction
 
 
-// type marker = {
-//   position: [number, number];
-//   content: string;
-// };
-
-// const Markers: marker[] = [
-//   {
-//     position: [23.34380664470183, 85.30615675989196],
-//     content: "Location 1",
-//   },
-//   {
-//     position: [23.35019807248094, 85.30010335350777],
-//     content: "Location 2",
-//   },
-//   {
-//     position: [23.355060909178736, 85.32643567127896],
-//     content: "Location 3",
-//   },
- 
-// ];
 
 
 

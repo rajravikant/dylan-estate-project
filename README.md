@@ -15,6 +15,8 @@
 ![Screenshot 2024-07-13 011159](https://github.com/user-attachments/assets/f04ec8c8-b74c-4506-a752-432c778c79bb)
 ![Screenshot 2024-07-13 012145](https://github.com/user-attachments/assets/a6343952-8cde-4266-9a45-b0a5460e3545)
 
+=======
+>>>>>>> Stashed changes
 
 
 ### How to use

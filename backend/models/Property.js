@@ -26,7 +26,6 @@ const Propertyschema = new Schema(
       locality: {type: String,required: true,},
       landmark: {type: String,required: true,},
       city: {type: String,required: true,},
-      map: {type: String},
     },
 
 

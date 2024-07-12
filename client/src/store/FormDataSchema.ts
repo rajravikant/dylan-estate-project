@@ -16,11 +16,10 @@ export type PropertyDetailsType = {
   propertyDescription: string;
 };
 export type LocationDetailsType = {
-  buildingName: string;
-  locality: string;
-  landmark: string;
-  city: string;
-  map: string;
+  buildingName: string
+  locality: string
+  landmark: string
+  city: string
 };
 
 export type FeaturesType = {

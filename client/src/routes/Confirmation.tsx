@@ -8,14 +8,14 @@ const Confirmation = () => {
     const token = user.token ?? null;
     const navigate = useNavigate();
     const location = useLocation();
-    // let {propertyID} = location.state 
-    let  propertyID:string | null = null;
+    // let {propertyID} = location.state
+    let propertyID = location.state?.propertyID; 
+      
     useEffect(() => {
         if (!token) {
             navigate("/login");
         }
-        propertyID = location.state.propertyID as string
-    }, [token]);
+    }, []);
     
 
   

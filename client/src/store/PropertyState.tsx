@@ -54,7 +54,7 @@ export const PropertyStateProvider = ({
     locality: "",
     landmark: "",
     city: "Delhi",
-    map: "",
+  
   });
 
   const [features, setFeatures] = useState<FeaturesType>({
@@ -108,7 +108,6 @@ export const PropertyStateProvider = ({
       locality: "",
       landmark: "",
       city: "",
-      map: "",
     });
 
     setFeatures({
