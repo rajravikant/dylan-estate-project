@@ -87,7 +87,9 @@ export const loader = (async () => {
   } catch (error:Error | AxiosError | any) {
     return error;
   }
-})satisfies LoaderFunction
+  
+}
+)satisfies LoaderFunction
 
 
 type marker = {
