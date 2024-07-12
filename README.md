@@ -8,6 +8,15 @@
 
 **File Storage:** Firebase
 
+
+## Screenshots
+
+![Screenshot 2024-07-13 011925](https://github.com/user-attachments/assets/3d3edb8e-ac4f-401a-8a95-c63f9d799965)
+![Screenshot 2024-07-13 011159](https://github.com/user-attachments/assets/f04ec8c8-b74c-4506-a752-432c778c79bb)
+![Screenshot 2024-07-13 012145](https://github.com/user-attachments/assets/a6343952-8cde-4266-9a45-b0a5460e3545)
+
+
+
 ### How to use
 
 You can have this application up and running with just a few steps because it has both the frontend and the backend in a single repository. Follow the steps below to do so.
